@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 // ─── Site configuration ───────────────────────────────────────────────────────
 // Single source of truth. Import from here everywhere — never hardcode strings.
 
@@ -43,7 +45,7 @@ export const NAV_LINKS = [
 
 // ─── Metadata defaults ────────────────────────────────────────────────────────
 
-export const DEFAULT_METADATA = {
+export const DEFAULT_METADATA: Metadata = {
   title: {
     default: SITE_CONFIG.title,
     template: `%s — ${SITE_CONFIG.shortName}`,
@@ -51,7 +53,7 @@ export const DEFAULT_METADATA = {
   description: SITE_CONFIG.description,
   metadataBase: new URL(SITE_CONFIG.url),
   openGraph: {
-    type: "website" as const,
+    type: "website",
     locale: "en_US",
     url: SITE_CONFIG.url,
     siteName: SITE_CONFIG.name,
@@ -65,10 +67,10 @@ export const DEFAULT_METADATA = {
     ],
   },
   twitter: {
-    card: "summary_large_image" as const,
+    card: "summary_large_image",
   },
   robots: {
     index: true,
     follow: true,
   },
-} as const;
+};
