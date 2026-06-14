@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(git -C \"C:\\\\Users\\\\HP\\\\okeowo-portfolio\" status 2>&1)",
+      "PowerShell(git -C \"C:\\\\Users\\\\HP\\\\okeowo-portfolio\" log --oneline -5 2>&1)"
+    ]
+  }
+}

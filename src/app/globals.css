@@ -1,0 +1,438 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   TAILWIND V4 THEME
+   Everything that was in tailwind.config.ts now lives here under @theme.
+   Tailwind v4 reads CSS custom properties defined in @theme and generates
+   utility classes automatically. No JS config file needed.
+
+   Naming convention:
+     --color-*      → bg-*, text-*, border-*, fill-*, etc.
+     --font-*       → font-* (font-family)
+     --text-*       → text-* (font-size + line-height)
+     --radius-*     → rounded-*
+     --spacing-*    → p-*, m-*, gap-*, w-*, h-*, etc.
+     --ease-*       → ease-*
+     --animate-*    → animate-*
+   ============================================================================ */
+
+@theme {
+
+  /* ── Fonts ─────────────────────────────────────────────────────────────────
+     Geist is loaded via the `geist` npm package in layout.tsx.
+     The CSS variables --font-geist-sans and --font-geist-mono are injected
+     by the package into <html>. We reference them here.
+  ────────────────────────────────────────────────────────────────────────── */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* ── Color palette — light mode values ─────────────────────────────────────
+     Dark mode values are set via .dark class overrides in @layer base below.
+     Every color token maps to a bg-*, text-*, border-* utility automatically.
+  ────────────────────────────────────────────────────────────────────────── */
+
+  /* Canvas / background layers */
+  --color-canvas:           #FAFAFA;
+  --color-surface:          #FFFFFF;
+  --color-elevated:         #F4F4F5;
+
+  /* Borders */
+  --color-border:           #E4E4E7;
+  --color-border-strong:    #D4D4D8;
+
+  /* Text */
+  --color-tx-primary:       #18181B;
+  --color-tx-secondary:     #52525B;
+  --color-tx-muted:         #A1A1AA;
+
+  /* Accent — single blue */
+  --color-accent-50:        #EFF6FF;
+  --color-accent-100:       #DBEAFE;
+  --color-accent-200:       #BFDBFE;
+  --color-accent-400:       #60A5FA;
+  --color-accent-500:       #3B82F6;
+  --color-accent-600:       #2563EB;
+  --color-accent-700:       #1D4ED8;
+  --color-accent-900:       #1E3A8A;
+
+  /* Semantic — status */
+  --color-available-bg:     #DCFCE7;
+  --color-available-text:   #15803D;
+  --color-available-dot:    #22C55E;
+
+  --color-considering-bg:   #FEF9C3;
+  --color-considering-text: #A16207;
+  --color-considering-dot:  #F59E0B;
+
+  --color-unavailable-bg:   #F4F4F5;
+  --color-unavailable-text: #71717A;
+  --color-unavailable-dot:  #A1A1AA;
+
+  /* ── Typography scale ──────────────────────────────────────────────────────
+     --text-{name} sets font-size.
+     --text-{name}--line-height sets the paired line-height.
+     --text-{name}--letter-spacing sets tracking (Tailwind v4 supports this).
+  ────────────────────────────────────────────────────────────────────────── */
+
+  /* Display */
+  --text-display-2xl:                    4.5rem;
+  --text-display-2xl--line-height:       1.05;
+  --text-display-2xl--letter-spacing:    -0.04em;
+
+  --text-display-xl:                     3rem;
+  --text-display-xl--line-height:        1.1;
+  --text-display-xl--letter-spacing:     -0.03em;
+
+  --text-display-lg:                     2.25rem;
+  --text-display-lg--line-height:        1.15;
+  --text-display-lg--letter-spacing:     -0.025em;
+
+  /* Headings */
+  --text-heading-lg:                     2rem;
+  --text-heading-lg--line-height:        1.2;
+  --text-heading-lg--letter-spacing:     -0.02em;
+
+  --text-heading-md:                     1.5rem;
+  --text-heading-md--line-height:        1.3;
+  --text-heading-md--letter-spacing:     -0.015em;
+
+  --text-heading-sm:                     1.125rem;
+  --text-heading-sm--line-height:        1.4;
+  --text-heading-sm--letter-spacing:     -0.01em;
+
+  /* Body */
+  --text-body-lg:                        1rem;
+  --text-body-lg--line-height:           1.7;
+
+  --text-body-md:                        0.9375rem;
+  --text-body-md--line-height:           1.65;
+
+  --text-body-sm:                        0.875rem;
+  --text-body-sm--line-height:           1.6;
+
+  /* UI */
+  --text-label:                          0.75rem;
+  --text-label--line-height:             1.4;
+  --text-label--letter-spacing:          0.04em;
+
+  --text-caption:                        0.6875rem;
+  --text-caption--line-height:           1.4;
+  --text-caption--letter-spacing:        0.02em;
+
+  /* ── Spacing — 4px base, 8-point grid ─────────────────────────────────────
+     Tailwind v4 includes a default spacing scale. We only need to ADD
+     non-standard values (18 = 72px). Standard ones (1–16, 20, 24, etc.) exist.
+  ────────────────────────────────────────────────────────────────────────── */
+  --spacing-18: 4.5rem;   /* 72px — used for hero padding */
+
+  /* ── Border radius ─────────────────────────────────────────────────────────
+     Tailwind v4 default: sm=2px, md=6px, lg=8px, xl=12px, 2xl=16px, full.
+     We override to match our design system exactly.
+  ────────────────────────────────────────────────────────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  20px;
+  --radius-full: 9999px;
+
+  /* ── Max widths ────────────────────────────────────────────────────────────
+     --width-* maps to max-w-* and w-* utilities in v4.
+  ────────────────────────────────────────────────────────────────────────── */
+  --width-site:    1200px;
+  --width-content: 720px;
+  --width-prose:   65ch;
+
+  /* ── Easing ────────────────────────────────────────────────────────────────
+     --ease-* maps to ease-* utilities.
+  ────────────────────────────────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Transitions ───────────────────────────────────────────────────────────
+     --transition-duration-* maps to duration-* utilities.
+  ────────────────────────────────────────────────────────────────────────── */
+  --transition-duration-fast:     150ms;
+  --transition-duration-default:  200ms;
+  --transition-duration-moderate: 300ms;
+  --transition-duration-slow:     500ms;
+
+  /* ── Keyframes + animations ────────────────────────────────────────────────
+     Defined as standard CSS keyframes, then referenced in --animate-*.
+  ────────────────────────────────────────────────────────────────────────── */
+  --animate-fade-in:  fade-in 0.5s cubic-bezier(0, 0, 0.2, 1) both;
+  --animate-fade-up:  fade-up 0.5s cubic-bezier(0, 0, 0.2, 1) both;
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+  }
+
+} /* end @theme */
+
+
+/* ============================================================================
+   DARK MODE — CSS custom property overrides
+   Tailwind v4 dark mode with `class` strategy:
+   Add `darkMode: 'class'` is gone. Instead, use @variant dark or define a
+   custom variant. For next-themes (which sets class="dark" on <html>),
+   we use the .dark selector to override our --color-* tokens.
+   ============================================================================ */
+
+@variant dark (&:is(.dark *));
+
+.dark {
+  /* Canvas / background layers */
+  --color-canvas:        #09090B;
+  --color-surface:       #111113;
+  --color-elevated:      #1C1C1F;
+
+  /* Borders */
+  --color-border:        #27272A;
+  --color-border-strong: #3F3F46;
+
+  /* Text */
+  --color-tx-primary:    #FAFAFA;
+  --color-tx-secondary:  #A1A1AA;
+  --color-tx-muted:      #71717A;
+
+  /* Semantic — dark mode status colors stay the same hue,
+     but we adjust backgrounds to work on dark surfaces */
+  --color-available-bg:     #052e16;
+  --color-available-text:   #4ade80;
+
+  --color-considering-bg:   #1c1003;
+  --color-considering-text: #fbbf24;
+
+  --color-unavailable-bg:   #1c1c1f;
+  --color-unavailable-text: #71717a;
+}
+
+
+/* ============================================================================
+   BASE STYLES
+   Global resets and element defaults.
+   ============================================================================ */
+
+@layer base {
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-tx-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Global focus ring */
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-canvas), 0 0 0 4px var(--color-accent-500);
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--color-accent-100);
+    color: var(--color-accent-900);
+  }
+
+  /* Smooth color transitions when switching dark/light mode.
+     Apply only to color-related properties — not transforms or opacity,
+     which would break animations. */
+  *, *::before, *::after {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: var(--transition-duration-fast);
+    transition-timing-function: var(--ease-out);
+  }
+
+  /* Body itself gets no transition — prevents the dark mode flash */
+  body {
+    transition: none;
+  }
+
+}
+
+
+/* ============================================================================
+   COMPONENT UTILITIES
+   Reusable utility classes that compose multiple design tokens.
+   In v4 these are defined with @utility (replaces @layer components).
+   ============================================================================ */
+
+@utility container-site {
+  width: 100%;
+  max-width: var(--width-site);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@utility container-content {
+  width: 100%;
+  max-width: var(--width-content);
+  margin-inline: auto;
+}
+
+/* Focus ring as a utility class (used in components that can't use :focus-visible easily) */
+@utility focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-canvas), 0 0 0 4px var(--color-accent-500);
+}
+
+
+/* ============================================================================
+   PROSE — MDX / blog / case study content styles
+   Applied as a class="prose-portfolio" wrapper in PostContent.tsx
+   ============================================================================ */
+
+@layer components {
+
+  .prose-portfolio {
+    font-size: var(--text-body-md);
+    line-height: var(--text-body-md--line-height);
+    color: var(--color-tx-primary);
+    max-width: var(--width-prose);
+  }
+
+  .prose-portfolio h1 {
+    font-size: var(--text-heading-lg);
+    line-height: var(--text-heading-lg--line-height);
+    letter-spacing: var(--text-heading-lg--letter-spacing);
+    font-weight: 500;
+    color: var(--color-tx-primary);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .prose-portfolio h2 {
+    font-size: var(--text-heading-md);
+    line-height: var(--text-heading-md--line-height);
+    letter-spacing: var(--text-heading-md--letter-spacing);
+    font-weight: 500;
+    color: var(--color-tx-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-portfolio h3 {
+    font-size: var(--text-heading-sm);
+    line-height: var(--text-heading-sm--line-height);
+    font-weight: 500;
+    color: var(--color-tx-primary);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-portfolio p {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+    color: var(--color-tx-secondary);
+  }
+
+  .prose-portfolio a {
+    color: var(--color-accent-600);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition-property: color;
+    transition-duration: var(--transition-duration-fast);
+  }
+
+  .prose-portfolio a:hover {
+    color: var(--color-accent-700);
+  }
+
+  .dark .prose-portfolio a {
+    color: var(--color-accent-400);
+  }
+
+  .dark .prose-portfolio a:hover {
+    color: var(--color-accent-200);
+  }
+
+  .prose-portfolio ul {
+    margin-bottom: 1.25rem;
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .prose-portfolio li {
+    color: var(--color-tx-secondary);
+    position: relative;
+  }
+
+  .prose-portfolio li::before {
+    content: '–';
+    position: absolute;
+    left: -1rem;
+    color: var(--color-tx-muted);
+  }
+
+  .prose-portfolio code {
+    font-family: var(--font-mono);
+    font-size: var(--text-body-sm);
+    padding: 0.125rem 0.375rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-elevated);
+    color: var(--color-tx-primary);
+  }
+
+  .prose-portfolio pre {
+    font-family: var(--font-mono);
+    font-size: var(--text-body-sm);
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    margin-bottom: 1.25rem;
+    background-color: var(--color-elevated);
+    border: 1px solid var(--color-border);
+  }
+
+  .prose-portfolio pre code {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .prose-portfolio blockquote {
+    border-left: 2px solid var(--color-accent-400);
+    padding-left: 1rem;
+    margin: 1.25rem 0;
+    color: var(--color-tx-secondary);
+    font-style: italic;
+  }
+
+  .prose-portfolio hr {
+    border-color: var(--color-border);
+    margin: 2.5rem 0;
+  }
+
+  .prose-portfolio strong {
+    font-weight: 500;
+    color: var(--color-tx-primary);
+  }
+
+}
