@@ -19,6 +19,19 @@ export interface Project {
   hasCaseStudy: boolean;      // if true, /projects/[slug] renders the MDX file
 }
 
+// ─── Experience types ─────────────────────────────────────────────────────────
+
+export interface Experience {
+  role: string;
+  organization: string;
+  location?: string;
+  startDate: string;          // ISO date string: "2026-07"
+  endDate?: string;           // omit if current is true
+  current: boolean;
+  focusAreas: string[];
+  description: string;
+}
+
 // ─── Blog types ───────────────────────────────────────────────────────────────
 // Used in v2. Defined here so types exist before the feature is built.
 

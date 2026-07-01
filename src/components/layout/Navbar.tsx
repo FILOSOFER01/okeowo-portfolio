@@ -65,7 +65,7 @@ export function Navbar() {
           {/* ── Desktop links ────────────────────────────────────────────────── */}
           <div className="hidden md:flex items-center gap-1">
             {NAV_LINKS.map((link) => {
-              const isActive = !!pathname?.startsWith(link.href);
+              const isActive = pathname?.startsWith(link.href) ?? false;
               return (
                 <NavLink key={link.href} href={link.href} isActive={isActive}>
                   {link.label}
@@ -125,7 +125,7 @@ export function Navbar() {
         >
           <div className="flex flex-col gap-1 p-4">
             {NAV_LINKS.map((link) => {
-              const isActive = !!pathname?.startsWith(link.href);
+              const isActive = pathname?.startsWith(link.href) ?? false;
               return (
                 <Link
                   key={link.href}

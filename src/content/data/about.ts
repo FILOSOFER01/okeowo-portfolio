@@ -1,15 +1,15 @@
-import type { Skill } from "@/types";
+import type { Skill, Experience } from "@/types";
 
 // ─── BIO ──────────────────────────────────────────────────────────────────────
 
 export const BIO = {
   short:
-    "Computer Science student at Lead City University, building toward a career at the intersection of AI and software engineering.",
+    "Computer Science student at Lead City University, currently interning in cybersecurity at New Horizons, building toward a career at the intersection of AI and software engineering.",
 
   paragraphs: [
     "I'm Okeowo Emmanuel Moyinoluwa, a 300-level Computer and Information Science student at Lead City University, Ibadan. I build things — websites, tools, and systems — because I learn best when something real is at stake. Every project I've shipped has taught me more than any lecture.",
     "My focus right now is full-stack web development and AI-powered applications. I'm drawn to how large language models and AI tooling are changing what individual developers can build — and I want to be someone who builds with those tools, not just someone who uses them.",
-    "I'm about to start my IT internship, and I'm looking for an environment where I can contribute real work, learn from engineers who are better than me, and grow fast. Long term, I want to build my own startup. I'm already working on something.",
+    "I'm currently doing a 6-month IT internship at New Horizons, focused on cybersecurity — learning how systems get attacked and how to design and defend them properly. I'm looking for an environment where I can contribute real work, learn from engineers who are better than me, and grow fast. Long term, I want to build my own startup. I'm already working on something.",
   ],
 
   values: [
@@ -52,7 +52,7 @@ export const EDUCATION = {
   startYear:          2023,
   expectedGraduation: "2027",
   currentLevel:       "300 Level",
-  status:             "About to begin IT internship",
+  status:             "Interning at New Horizons (Cybersecurity)",
   relevantCourses: [
     "Data Structures & Algorithms",
     "Software Engineering",
@@ -62,6 +62,25 @@ export const EDUCATION = {
     "ICT Project Development",
   ],
 } as const;
+
+// ─── EXPERIENCE ───────────────────────────────────────────────────────────────
+
+export const EXPERIENCE: Experience[] = [
+  {
+    role:         "IT Intern — Cybersecurity",
+    organization: "New Horizons",
+    startDate:    "2026-07",
+    current:      true,
+    focusAreas: [
+      "Security fundamentals",
+      "Network security",
+      "Threat awareness",
+      "IT operations",
+    ],
+    description:
+      "Currently 6 months into an IT internship focused on cybersecurity — getting hands-on with security fundamentals, network defense, and day-to-day IT operations alongside working engineers.",
+  },
+];
 
 // ─── SKILLS ───────────────────────────────────────────────────────────────────
 // Proficiency is 0–100. These reflect where you actually are right now.
@@ -102,6 +121,7 @@ export const SKILLS: Skill[] = [
   { name: "LLM workflows",        category: "concepts", proficiency: 65 },
   { name: "Algorithmic thinking", category: "concepts", proficiency: 70 },
   { name: "Data Analysis",        category: "concepts", proficiency: 45 },
+  { name: "Cybersecurity Fundamentals", category: "concepts", proficiency: 35 },
 ];
 
 export function getSkillsByCategory() {
@@ -122,6 +142,7 @@ export function getSkillsByCategory() {
 // ─── CURRENTLY_LEARNING ───────────────────────────────────────────────────────
 
 export const CURRENTLY_LEARNING = [
+  "Cybersecurity — hands-on during my internship at New Horizons",
   "TypeScript — using it daily building this portfolio",
   "React & Next.js — learning the ecosystem by shipping real pages",
   "AI application development — how to build products that use LLMs as a core feature",

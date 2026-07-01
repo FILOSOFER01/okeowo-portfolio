@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/lib/constants";
 import { AboutHero } from "@/components/about/AboutHero";
+import { ExperienceCard } from "@/components/about/ExperienceCard";
 import { SkillsGrid } from "@/components/about/SkillsGrid";
 import { EducationCard } from "@/components/about/EducationCard";
 
@@ -16,6 +17,7 @@ export default function AboutPage() {
       style={{ maxWidth: "var(--width-site)" }}
     >
       <AboutHero />
+      <ExperienceCard />
       <SkillsGrid />
       <EducationCard />
     </div>

@@ -63,7 +63,7 @@ export function EducationCard() {
             <Row label="Degree" value={`${EDUCATION.degree} — ${EDUCATION.field}`} />
             <Row label="Level" value={`${EDUCATION.currentLevel} (Started ${EDUCATION.startYear})`} />
             <Row label="Graduation" value={EDUCATION.expectedGraduation} />
-            <Row label="Next step" value={EDUCATION.status} highlight />
+            <Row label="Currently" value={EDUCATION.status} highlight />
           </div>
 
           {/* Relevant courses */}

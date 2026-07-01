@@ -37,7 +37,7 @@ export default function HomePage() {
         </h1>
 
         <p
-          className="mb-10"
+          className="mb-4"
           style={{
             fontSize: "var(--text-body-lg)",
             lineHeight: "var(--text-body-lg--line-height)",
@@ -47,6 +47,17 @@ export default function HomePage() {
         >
           Computer Science student and aspiring software engineer. I build
           systems that are fast, readable, and honest about their tradeoffs.
+        </p>
+
+        <p
+          className="mb-10"
+          style={{
+            fontSize: "var(--text-body-sm)",
+            color: "var(--color-tx-muted)",
+            maxWidth: "var(--width-content)",
+          }}
+        >
+          Currently a 6-month IT intern at New Horizons, focused on cybersecurity.
         </p>
 
         <div className="flex flex-wrap gap-3">
