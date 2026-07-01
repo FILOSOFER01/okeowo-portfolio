@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +24,15 @@ interface PhotoSlideshowProps {
   sizes?: string;
 }
 
+// Subscribe to the OS "prefers-reduced-motion" setting via an external store so
+// the component reacts to changes without a page reload (and avoids setState in
+// an effect — satisfies the project's react-hooks rules).
+function subscribeReducedMotion(callback: () => void) {
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+}
+
 export function PhotoSlideshow({
   images,
   className,
@@ -32,16 +41,24 @@ export function PhotoSlideshow({
 }: PhotoSlideshowProps) {
   const [index, setIndex] = useState(0);
 
+  // Read the reduced-motion preference reactively. When it's off the slideshow
+  // auto-advances; when on it holds on one photo. Because this re-runs the
+  // effect when the setting changes, toggling it no longer needs a page reload.
+  const reducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false
+  );
+
   useEffect(() => {
-    if (images.length <= 1) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (images.length <= 1 || reducedMotion) return;
 
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % images.length);
     }, intervalMs);
 
     return () => clearInterval(id);
-  }, [images.length, intervalMs]);
+  }, [images.length, intervalMs, reducedMotion]);
 
   if (images.length === 0) return null;
 
