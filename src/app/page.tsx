@@ -57,8 +57,10 @@ export default function HomePage() {
                 animationDelay: "120ms",
               }}
             >
-              Computer Science student and aspiring software engineer. I build
-              systems that are fast, readable, and honest about their tradeoffs.
+              Software engineer building full-stack web applications, with a
+              focus on AI, cloud, and modern web engineering. I like problems
+              that span the full stack — from data models and APIs to the
+              interface people actually use.
             </p>
 
             <p
@@ -70,7 +72,8 @@ export default function HomePage() {
                 animationDelay: "180ms",
               }}
             >
-              Currently a 6-month IT intern at New Horizons, focused on cybersecurity.
+              I care about software that&apos;s fast, reliable, and honest about
+              its tradeoffs. Currently a cybersecurity intern at New Horizons.
             </p>
 
             <div
@@ -98,7 +101,18 @@ export default function HomePage() {
                   color: "var(--color-tx-primary)",
                 }}
               >
-                Download CV
+                Download resume
+              </a>
+              <a
+                href="/contact"
+                className="inline-flex items-center h-10 px-5 rounded-md font-medium border hover:bg-[var(--color-elevated)] transition-all duration-[150ms]"
+                style={{
+                  fontSize: "var(--text-body-sm)",
+                  borderColor: "var(--color-border)",
+                  color: "var(--color-tx-primary)",
+                }}
+              >
+                Contact me
               </a>
             </div>
           </div>

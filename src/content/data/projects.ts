@@ -6,7 +6,7 @@ export const PROJECTS: Project[] = [
     slug:  "takerbank",
     title: "TakerBank",
     description:
-      "A fully-functioning digital banking website with account management, loans, cards, and mobile banking — built as a group project for ICT 211.",
+      "A multi-page digital banking interface — accounts, loans, cards, and mobile banking — built and shipped to GitHub Pages with a 10-person team.",
     longDescription:
       "TakerBank is a multi-page digital banking platform built by a 10-person team for our ICT 211 course. It covers the full surface area of a real banking product: account opening, loan applications, card services, mobile banking, support, and an FAQ. My contribution focused on front-end structure and page layout. Deployed live on GitHub Pages.",
     status:     "shipped",
@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
     slug:  "summitguard",
     title: "SummitGuard",
     description:
-      "A professional multi-page insurance company website with 6 service categories, a contact form, careers section, and leadership page — deployed on both GitHub Pages and Netlify.",
+      "A multi-page insurance company site — six service lines, careers, and contact — deployed to both GitHub Pages and Netlify.",
     longDescription:
       "SummitGuard is a fully-featured business website built for a fictional insurance brand, Atlas Trust Group. The site covers the complete surface area of a real company's web presence: a homepage with an image carousel, six insurance service pages (Life, Health, Home, Vehicle, Business, Property), an About page, a Careers section, a Leadership page, and a Contact form. The project demonstrates the ability to design and build production-quality, multi-page websites and deploy them across multiple hosting platforms simultaneously. The site is live on both GitHub Pages and Netlify.",
     status:     "shipped",
