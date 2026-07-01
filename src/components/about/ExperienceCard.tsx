@@ -1,9 +1,11 @@
 import { EXPERIENCE } from "@/content/data/about";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function ExperienceCard() {
   if (EXPERIENCE.length === 0) return null;
 
   return (
+    <Reveal>
     <section className="py-16 border-t" style={{ borderColor: "var(--color-border)" }}>
 
       {/* ── Section header ── */}
@@ -108,5 +110,6 @@ export function ExperienceCard() {
       </div>
 
     </section>
+    </Reveal>
   );
 }

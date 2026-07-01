@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getAllProjects } from "@/content/data/projects";
 import { ProjectCard } from "@/components/cards/ProjectCard";
 import { SITE_CONFIG } from "@/lib/constants";
+import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -22,7 +23,7 @@ export default function ProjectsPage() {
     >
 
       {/* ── Page header ── */}
-      <div className="mb-14 max-w-[var(--width-content)]">
+      <div className="mb-14 max-w-[var(--width-content)] animate-fade-up">
         <p
           className="mb-3 font-medium uppercase tracking-widest"
           style={{
@@ -59,8 +60,10 @@ export default function ProjectsPage() {
 
       {/* ── Project grid ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+        {projects.map((project, i) => (
+          <Reveal key={project.slug} delay={i * 80}>
+            <ProjectCard project={project} />
+          </Reveal>
         ))}
       </div>
 

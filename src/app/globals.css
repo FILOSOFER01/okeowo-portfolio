@@ -163,6 +163,7 @@
   --animate-fade-in:  fade-in 0.5s cubic-bezier(0, 0, 0.2, 1) both;
   --animate-fade-up:  fade-up 0.5s cubic-bezier(0, 0, 0.2, 1) both;
   --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+  --animate-kenburns: kenburns 9s ease-in-out infinite alternate;
 
   @keyframes fade-in {
     from { opacity: 0; transform: translateY(12px); }
@@ -177,6 +178,13 @@
   @keyframes pulse-dot {
     0%, 100% { opacity: 1; }
     50%       { opacity: 0.4; }
+  }
+
+  /* Slow, subtle zoom/pan used behind the photo slideshow — keeps a static
+     portrait feeling alive without being distracting. */
+  @keyframes kenburns {
+    0%   { transform: scale(1) translate3d(0, 0, 0); }
+    100% { transform: scale(1.08) translate3d(-1.5%, -1.5%, 0); }
   }
 
 } /* end @theme */

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/lib/constants";
 import { ContactCard } from "@/components/contact/ContactCard";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -19,7 +20,7 @@ export default function ContactPage() {
       style={{ maxWidth: "var(--width-site)" }}
     >
       {/* ── Page header ── */}
-      <div className="mb-16" style={{ maxWidth: "var(--width-content)" }}>
+      <div className="mb-16 animate-fade-up" style={{ maxWidth: "var(--width-content)" }}>
         <p
           className="mb-4 font-medium uppercase tracking-widest"
           style={{ fontSize: "var(--text-caption)", color: "var(--color-tx-muted)" }}
@@ -55,30 +56,36 @@ export default function ContactPage() {
 
       {/* ── Contact cards ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
-        <ContactCard
-          label="Email"
-          title={SITE_CONFIG.email}
-          description="Best way to reach me. For internship inquiries, collaborations, or just to say hello."
-          href={`mailto:${SITE_CONFIG.email}`}
-          actionLabel="Send an email"
-        />
-        {SITE_CONFIG.linkedin && (
+        <Reveal delay={0}>
           <ContactCard
-            label="LinkedIn"
-            title="Okeowo Emmanuel"
-            description="My professional profile. Connect with me here for career opportunities and networking."
-            href={SITE_CONFIG.linkedin}
-            actionLabel="View LinkedIn profile"
+            label="Email"
+            title={SITE_CONFIG.email}
+            description="Best way to reach me. For internship inquiries, collaborations, or just to say hello."
+            href={`mailto:${SITE_CONFIG.email}`}
+            actionLabel="Send an email"
           />
+        </Reveal>
+        {SITE_CONFIG.linkedin && (
+          <Reveal delay={80}>
+            <ContactCard
+              label="LinkedIn"
+              title="Okeowo Emmanuel"
+              description="My professional profile. Connect with me here for career opportunities and networking."
+              href={SITE_CONFIG.linkedin}
+              actionLabel="View LinkedIn profile"
+            />
+          </Reveal>
         )}
         {SITE_CONFIG.github && (
-          <ContactCard
-            label="GitHub"
-            title="filosofer01"
-            description="See what I'm building. All my projects and open source work live here."
-            href={SITE_CONFIG.github}
-            actionLabel="View GitHub profile"
-          />
+          <Reveal delay={160}>
+            <ContactCard
+              label="GitHub"
+              title="filosofer01"
+              description="See what I'm building. All my projects and open source work live here."
+              href={SITE_CONFIG.github}
+              actionLabel="View GitHub profile"
+            />
+          </Reveal>
         )}
       </div>
 
@@ -86,6 +93,7 @@ export default function ContactPage() {
       <div className="border-t mb-16" style={{ borderColor: "var(--color-border)" }} />
 
       {/* ── Form section ── */}
+      <Reveal>
       <div style={{ maxWidth: "var(--width-content)" }}>
         <p
           className="mb-2 font-medium uppercase tracking-widest"
@@ -113,6 +121,7 @@ export default function ContactPage() {
         {/* Client Component — handles the onSubmit event handler */}
         <ContactForm />
       </div>
+      </Reveal>
     </div>
   );
 }

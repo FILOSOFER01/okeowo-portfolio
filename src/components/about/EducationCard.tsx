@@ -1,7 +1,9 @@
 import { EDUCATION, BIO } from "@/content/data/about";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function EducationCard() {
   return (
+    <Reveal>
     <section className="py-16 border-t" style={{ borderColor: "var(--color-border)" }}>
 
       {/* ── Section header ── */}
@@ -169,6 +171,7 @@ export function EducationCard() {
       </div>
 
     </section>
+    </Reveal>
   );
 }
 

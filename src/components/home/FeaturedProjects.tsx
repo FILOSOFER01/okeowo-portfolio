@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getFeaturedProjects } from "@/content/data/projects";
 import { ProjectCard } from "@/components/cards/ProjectCard";
+import { Reveal } from "@/components/ui/Reveal";
 
 // ─── FeaturedProjects ─────────────────────────────────────────────────────────
 // Homepage section. Shows exactly 3 featured projects in a responsive grid.
@@ -11,6 +12,7 @@ export function FeaturedProjects() {
   const projects = getFeaturedProjects();
 
   return (
+    <Reveal>
     <section className="py-16 md:py-24">
 
       {/* ── Section header ── */}
@@ -56,8 +58,10 @@ export function FeaturedProjects() {
       {/* ── 3-column grid ── */}
       {/* desktop: 3 cols | tablet: 2 cols | mobile: 1 col */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+        {projects.map((project, i) => (
+          <Reveal key={project.slug} delay={i * 80}>
+            <ProjectCard project={project} />
+          </Reveal>
         ))}
       </div>
 
@@ -77,5 +81,6 @@ export function FeaturedProjects() {
       </div>
 
     </section>
+    </Reveal>
   );
 }

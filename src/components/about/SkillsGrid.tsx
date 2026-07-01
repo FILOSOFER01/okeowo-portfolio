@@ -1,10 +1,12 @@
 import { cn } from "@/lib/utils";
 import { getSkillsByCategory, CURRENTLY_LEARNING } from "@/content/data/about";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function SkillsGrid() {
   const categories = getSkillsByCategory();
 
   return (
+    <Reveal>
     <section className="py-16 border-t" style={{ borderColor: "var(--color-border)" }}>
 
       {/* ── Section header ── */}
@@ -110,6 +112,7 @@ export function SkillsGrid() {
       </div>
 
     </section>
+    </Reveal>
   );
 }
 
