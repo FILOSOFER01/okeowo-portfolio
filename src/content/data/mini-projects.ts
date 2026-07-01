@@ -17,7 +17,17 @@ import type { MiniProject } from "@/types";
 //   status: "shipped",
 // },
 
-export const MINI_PROJECTS: MiniProject[] = [];
+export const MINI_PROJECTS: MiniProject[] = [
+  {
+    name: "Password Generator",
+    description:
+      "A privacy-first password generator that runs entirely in the browser — cryptographically secure, with adjustable length, character sets, and a live entropy strength meter.",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Web Crypto API"],
+    repoUrl: "https://github.com/FILOSOFER01/password-generator",
+    liveUrl: "https://password-generator-iota-lovat-10.vercel.app/",
+    status: "shipped",
+  },
+];
 
 export function getMiniProjects(): MiniProject[] {
   return MINI_PROJECTS;
