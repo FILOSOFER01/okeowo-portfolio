@@ -1,9 +1,7 @@
-import { getSkillsByCategory, CURRENTLY_LEARNING } from "@/content/data/about";
+import { SKILL_GROUPS, CURRENTLY_LEARNING } from "@/content/data/about";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function SkillsGrid() {
-  const categories = getSkillsByCategory();
-
   return (
     <Reveal>
     <section className="py-16 border-t" style={{ borderColor: "var(--color-border)" }}>
@@ -30,9 +28,9 @@ export function SkillsGrid() {
 
       {/* ── Skills categories grid ── */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
-        {categories.map(({ category, label, skills }) => (
+        {SKILL_GROUPS.map((group) => (
           <div
-            key={category}
+            key={group.label}
             className="rounded-xl p-6 border"
             style={{
               backgroundColor: "var(--color-surface)",
@@ -47,13 +45,24 @@ export function SkillsGrid() {
                 color: "var(--color-tx-primary)",
               }}
             >
-              {label}
+              {group.label}
             </h3>
 
-            {/* Skills list */}
-            <div className="flex flex-col gap-4">
-              {skills.map((skill) => (
-                <SkillBar key={skill.name} name={skill.name} proficiency={skill.proficiency} />
+            {/* Skill tags */}
+            <div className="flex flex-wrap gap-2">
+              {group.skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="px-2.5 py-1 rounded-md border"
+                  style={{
+                    fontSize: "var(--text-caption)",
+                    backgroundColor: "var(--color-elevated)",
+                    borderColor: "var(--color-border)",
+                    color: "var(--color-tx-secondary)",
+                  }}
+                >
+                  {skill}
+                </span>
               ))}
             </div>
           </div>
@@ -112,48 +121,5 @@ export function SkillsGrid() {
 
     </section>
     </Reveal>
-  );
-}
-
-// ── SkillBar ──────────────────────────────────────────────────────────────────
-
-function SkillBar({ name, proficiency }: { name: string; proficiency: number }) {
-  return (
-    <div>
-      <div className="flex items-center justify-between mb-1.5">
-        <span
-          style={{ fontSize: "var(--text-body-sm)", color: "var(--color-tx-secondary)" }}
-        >
-          {name}
-        </span>
-        <span
-          className="font-mono"
-          style={{ fontSize: "var(--text-caption)", color: "var(--color-tx-muted)" }}
-        >
-          {proficiency}%
-        </span>
-      </div>
-
-      {/* Track */}
-      <div
-        className="h-1 rounded-full overflow-hidden"
-        style={{ backgroundColor: "var(--color-elevated)" }}
-        role="progressbar"
-        aria-valuenow={proficiency}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-label={`${name} proficiency ${proficiency}%`}
-      >
-        {/* Fill */}
-        <div
-          className="h-full rounded-full"
-          style={{
-            width: `${proficiency}%`,
-            backgroundColor: "var(--color-accent-500)",
-            opacity: 0.5 + (proficiency / 100) * 0.5,
-          }}
-        />
-      </div>
-    </div>
   );
 }

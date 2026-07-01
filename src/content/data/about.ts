@@ -1,44 +1,43 @@
-import type { Skill, Experience } from "@/types";
+import type { Experience } from "@/types";
 
 // ─── BIO ──────────────────────────────────────────────────────────────────────
 
 export const BIO = {
   short:
-    "Computer Science student at Lead City University, currently interning in cybersecurity at New Horizons, building toward a career at the intersection of AI and software engineering.",
+    "Software engineer and Computer Science student building full-stack web applications, with a focus on AI, cloud, and modern web engineering.",
 
   paragraphs: [
-    "I'm Okeowo Emmanuel Moyinoluwa, a 300-level Computer and Information Science student at Lead City University, Ibadan. I build things — websites, tools, and systems — because I learn best when something real is at stake. Every project I've shipped has taught me more than any lecture.",
-    "My focus right now is full-stack web development and AI-powered applications. I'm drawn to how large language models and AI tooling are changing what individual developers can build — and I want to be someone who builds with those tools, not just someone who uses them.",
-    "I'm currently doing a 6-month IT internship at New Horizons, focused on cybersecurity — learning how systems get attacked and how to design and defend them properly. I'm looking for an environment where I can contribute real work, learn from engineers who are better than me, and grow fast. Long term, I want to build my own startup. I'm already working on something.",
+    "I'm a software engineer and Computer and Information Science student at Lead City University. I build full-stack web applications end to end, and I care most about the details that decide whether software holds up in the real world — clean data models, sensible APIs, and interfaces that stay fast and predictable.",
+    "My focus sits where AI, cloud, and modern web engineering meet. I use AI tooling deliberately to build and ship faster, and I'm steadily going deeper on the backend and infrastructure side. Right now I'm a cybersecurity intern at New Horizons — a six-month IT internship I began in June 2026 — learning how real systems are attacked and defended. I'm looking for software engineering work where I can ship real code, learn from stronger engineers, and grow fast.",
   ],
 
   values: [
     {
       title: "Build to learn",
       description:
-        "I don't wait until I fully understand something before I start. I build first, break things, then understand why. The portfolio you're reading right now is a good example.",
+        "I learn fastest by building. I'd rather ship a rough version, find where it breaks, and understand the why from there than wait until everything is theoretically clear.",
     },
     {
       title: "Persistent through friction",
       description:
-        "When something breaks I debug it, not abandon it. I've pushed through every technical problem building this portfolio instead of giving up — that's how I approach everything.",
+        "When something breaks, I debug it — I don't route around it. Most of what I know came from staying with a hard problem until it gave.",
     },
     {
       title: "AI as a force multiplier",
       description:
-        "I use AI tools deliberately — to move faster, learn deeper, and ship better work. Prompt engineering is a real skill and I treat it like one.",
+        "I use AI tools deliberately to move faster and learn deeper. Prompt engineering is a real skill, and I treat it like one.",
     },
     {
       title: "Outcome-focused",
       description:
-        "I care about what gets built and whether it works — not how impressive the process looked. A deployed project beats a perfect plan every time.",
+        "I care about what actually ships and whether it works — not how impressive the process looked. A deployed project beats a perfect plan.",
     },
   ],
 
   careerGoals: [
-    "In the near term, I want to work as a software engineer on products that use AI in meaningful ways — not as a gimmick, but as the core of what makes the product useful.",
-    "I'm especially interested in roles where I can work on data pipelines, AI-integrated backends, or developer tools — systems that other engineers or end users rely on every day.",
-    "The longer arc: I want to build my own startup. I'm already thinking about what that looks like. The internship is the next step toward having the skills and credibility to make that happen.",
+    "Near term: a software engineering role where AI is core to the product — not a bolt-on gimmick — and where I can ship real code from day one.",
+    "I'm drawn to the systems other people rely on: data pipelines, AI-integrated backends, and developer tools.",
+    "I'm deliberately building toward stronger backend, cloud, and infrastructure skills as I take on more ambitious projects.",
   ],
 } as const;
 
@@ -69,7 +68,7 @@ export const EXPERIENCE: Experience[] = [
   {
     role:         "IT Intern — Cybersecurity",
     organization: "New Horizons",
-    startDate:    "2026-07",
+    startDate:    "2026-06",
     current:      true,
     focusAreas: [
       "Security fundamentals",
@@ -78,73 +77,53 @@ export const EXPERIENCE: Experience[] = [
       "IT operations",
     ],
     description:
-      "Currently 6 months into an IT internship focused on cybersecurity — getting hands-on with security fundamentals, network defense, and day-to-day IT operations alongside working engineers.",
+      "A six-month IT internship focused on cybersecurity, started June 2026 — getting hands-on with security fundamentals, network defense, and day-to-day IT operations alongside working engineers.",
   },
 ];
 
 // ─── SKILLS ───────────────────────────────────────────────────────────────────
-// Proficiency is 0–100. These reflect where you actually are right now.
-// Honest numbers build trust. A recruiter who hires you based on inflated
-// scores becomes a problem on day one.
+// Grouped by area, no self-rated percentages. Only technologies actually used
+// in real work are listed; anything still early-stage is marked "(learning)"
+// so nothing here overstates current experience.
 
-export const SKILLS: Skill[] = [
-  // ── Languages (unchanged) ────────────────────────────────────────────────────
-  { name: "JavaScript",  category: "languages",  proficiency: 75 },
-  { name: "HTML & CSS",  category: "languages",  proficiency: 85 },
-  { name: "TypeScript",  category: "languages",  proficiency: 45 },
-  { name: "Python",      category: "languages",  proficiency: 40 },
-
-  // ── Frameworks & libraries ───────────────────────────────────────────────────
-  // Unchanged: React, Next.js, Tailwind CSS
-  // Added: Apache Spark / PySpark — used in DTS 312 Big Data assignment
-  { name: "React",                  category: "frameworks", proficiency: 50 },
-  { name: "Next.js",                category: "frameworks", proficiency: 45 },
-  { name: "Tailwind CSS",           category: "frameworks", proficiency: 65 },
-  { name: "Apache Spark / PySpark", category: "frameworks", proficiency: 35 },
-
-  // ── Tools & workflow ─────────────────────────────────────────────────────────
-  // Unchanged: Git & GitHub, VS Code, Command Line, GitHub Pages
-  // Added: MongoDB — used in DTS 312 Big Data assignment
-  // Added: Linux — confirmed by Kali Linux environment in the same assignment
-  { name: "Git & GitHub",   category: "tools", proficiency: 70 },
-  { name: "VS Code",        category: "tools", proficiency: 85 },
-  { name: "Command Line",   category: "tools", proficiency: 60 },
-  { name: "GitHub Pages",   category: "tools", proficiency: 75 },
-  { name: "MongoDB",        category: "tools", proficiency: 35 },
-  { name: "Linux",          category: "tools", proficiency: 40 },
-
-  // ── AI & problem solving ─────────────────────────────────────────────────────
-  // Unchanged: Prompt Engineering, AI-assisted dev, LLM workflows, Algorithmic thinking
-  // Added: Data Analysis — supported by both the Big Data assignment and AI work
-  { name: "Prompt Engineering",   category: "concepts", proficiency: 80 },
-  { name: "AI-assisted dev",      category: "concepts", proficiency: 75 },
-  { name: "LLM workflows",        category: "concepts", proficiency: 65 },
-  { name: "Algorithmic thinking", category: "concepts", proficiency: 70 },
-  { name: "Data Analysis",        category: "concepts", proficiency: 45 },
-  { name: "Cybersecurity Fundamentals", category: "concepts", proficiency: 35 },
-];
-
-export function getSkillsByCategory() {
-  const order: Skill["category"][] = ["languages", "frameworks", "tools", "concepts"];
-  const labels: Record<Skill["category"], string> = {
-    languages:  "Languages",
-    frameworks: "Frameworks & libraries",
-    tools:      "Tools & workflow",
-    concepts:   "AI & problem solving",
-  };
-  return order.map((cat) => ({
-    category: cat,
-    label:    labels[cat],
-    skills:   SKILLS.filter((s) => s.category === cat),
-  }));
-}
+export const SKILL_GROUPS = [
+  {
+    label: "Languages",
+    skills: ["JavaScript", "TypeScript", "Python", "HTML & CSS"],
+  },
+  {
+    label: "Frontend",
+    skills: ["React", "Next.js", "Tailwind CSS"],
+  },
+  {
+    label: "Backend & APIs",
+    skills: ["Next.js API routes", "Node.js (learning)", "REST APIs"],
+  },
+  {
+    label: "Data & AI",
+    skills: [
+      "MongoDB",
+      "Apache Spark / PySpark (learning)",
+      "Prompt engineering",
+      "LLM workflows",
+      "AI-assisted development",
+    ],
+  },
+  {
+    label: "Cloud & Deployment",
+    skills: ["Vercel", "Netlify", "GitHub Pages", "Docker (learning)"],
+  },
+  {
+    label: "Tools",
+    skills: ["Git & GitHub", "Linux", "VS Code", "Command line"],
+  },
+] as const;
 
 // ─── CURRENTLY_LEARNING ───────────────────────────────────────────────────────
 
 export const CURRENTLY_LEARNING = [
   "Cybersecurity — hands-on during my internship at New Horizons",
-  "TypeScript — using it daily building this portfolio",
-  "React & Next.js — learning the ecosystem by shipping real pages",
-  "AI application development — how to build products that use LLMs as a core feature",
-  "Full-stack fundamentals — databases, APIs, authentication",
+  "Backend & APIs — data models, authentication, and server-side logic",
+  "Cloud fundamentals — deploying and running apps beyond static hosting",
+  "AI application development — building products with LLMs as a core feature",
 ] as const;
