@@ -27,6 +27,8 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
     githubUrl,
     demoUrl,
     hasCaseStudy,
+    keyFeatures,
+    linksNote,
   } = project;
 
   return (
@@ -97,7 +99,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 
         {/* Description */}
         <p
-          className="flex-1 leading-relaxed"
+          className="leading-relaxed"
           style={{
             fontSize: "var(--text-body-sm)",
             color: "var(--color-tx-secondary)",
@@ -106,9 +108,32 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
           {description}
         </p>
 
+        {/* Key features — scannable, 2–3 items */}
+        {keyFeatures && keyFeatures.length > 0 && (
+          <ul className="flex flex-col gap-1.5">
+            {keyFeatures.slice(0, 3).map((feature) => (
+              <li
+                key={feature}
+                className="flex items-start gap-2"
+                style={{
+                  fontSize: "var(--text-caption)",
+                  color: "var(--color-tx-secondary)",
+                }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="mt-1.5 h-1 w-1 rounded-full shrink-0"
+                  style={{ backgroundColor: "var(--color-accent-500)" }}
+                />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        )}
+
         {/* ── Footer: links ── */}
         <div
-          className="flex items-center gap-4 pt-3 border-t"
+          className="mt-auto flex items-center gap-4 pt-3 border-t"
           style={{ borderColor: "var(--color-border)" }}
         >
           {githubUrl && (
@@ -157,7 +182,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             </Link>
           )}
 
-          {/* If no links at all, show a placeholder */}
+          {/* No repo/demo — show an honest note instead of links */}
           {!githubUrl && !demoUrl && !hasCaseStudy && (
             <span
               style={{
@@ -165,7 +190,7 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
                 color: "var(--color-tx-muted)",
               }}
             >
-              Links coming soon
+              {linksNote ?? "Links coming soon"}
             </span>
           )}
         </div>

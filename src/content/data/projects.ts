@@ -24,6 +24,12 @@ export const PROJECTS: Project[] = [
       "Designed around an African digital banking use case",
     ],
     hasCaseStudy: false,
+    priority: 1,
+    keyFeatures: [
+      "Seven-page digital banking UI",
+      "Accounts, loans, cards, mobile banking",
+      "Built with a 10-person team",
+    ],
   },
 
   {
@@ -51,6 +57,13 @@ export const PROJECTS: Project[] = [
       "Identified top users, top hashtags, and language distribution across the dataset",
     ],
     hasCaseStudy: false,
+    priority: 3,
+    keyFeatures: [
+      "MongoDB-to-Spark data pipeline",
+      "PySpark cleaning and aggregation",
+      "Top users, hashtags, engagement analysis",
+    ],
+    linksNote: "Course project — no public demo",
   },
 
   {
@@ -81,15 +94,23 @@ export const PROJECTS: Project[] = [
       "Professional business content structured for real-world use",
     ],
     hasCaseStudy: false,
+    priority: 2,
+    keyFeatures: [
+      "Six insurance service pages",
+      "Careers, leadership, and contact",
+      "Dual deploy: GitHub Pages + Netlify",
+    ],
   },
 ];
 
 export function getFeaturedProjects(): Project[] {
-  return PROJECTS.filter((p) => p.featured).slice(0, 3);
+  return PROJECTS.filter((p) => p.featured)
+    .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))
+    .slice(0, 3);
 }
 
 export function getAllProjects(): Project[] {
-  return PROJECTS;
+  return [...PROJECTS].sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0));
 }
 
 export function getProjectBySlug(slug: string): Project | undefined {

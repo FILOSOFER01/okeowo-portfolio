@@ -17,6 +17,9 @@ export interface Project {
   endDate?: string;           // omit if in-progress
   outcomes?: string[];        // bullet-point results shown in case study sidebar
   hasCaseStudy: boolean;      // if true, /projects/[slug] renders the MDX file
+  keyFeatures?: string[];     // 2–3 short, scannable features (5–8 words each)
+  linksNote?: string;         // shown in the links row when there is no repo/demo
+  priority?: number;          // higher = ranked more prominently in Featured
 }
 
 // ─── Experience types ─────────────────────────────────────────────────────────
