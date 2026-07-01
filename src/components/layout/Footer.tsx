@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { SITE_CONFIG, NAV_LINKS, AVAILABILITY_CONFIG } from "@/lib/constants";
 
 // ─── Footer ───────────────────────────────────────────────────────────────────

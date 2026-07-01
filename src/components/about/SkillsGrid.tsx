@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import { getSkillsByCategory, CURRENTLY_LEARNING } from "@/content/data/about";
 import { Reveal } from "@/components/ui/Reveal";
 
