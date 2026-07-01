@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 // ─── Reveal ───────────────────────────────────────────────────────────────────
 // Fades + slides a section up the first time it scrolls into view.
@@ -13,17 +13,28 @@ interface RevealProps {
   delay?: number; // ms
 }
 
+// Subscribe to the OS "prefers-reduced-motion" setting via an external store,
+// so we never call setState inside an effect (react-hooks/set-state-in-effect).
+function subscribeReducedMotion(callback: () => void) {
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+}
+
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [skipAnimation, setSkipAnimation] = useState(false);
+
+  // Server snapshot is `false`, so SSR keeps the previous animated markup and
+  // the client updates to the real preference without a hydration mismatch.
+  const skipAnimation = useSyncExternalStore(
+    subscribeReducedMotion,
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false
+  );
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setSkipAnimation(true);
-      setVisible(true);
-      return;
-    }
+    if (skipAnimation) return;
 
     const el = ref.current;
     if (!el) return;
@@ -40,7 +51,7 @@ export function Reveal({ children, className, delay = 0 }: RevealProps) {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [skipAnimation]);
 
   return (
     <div

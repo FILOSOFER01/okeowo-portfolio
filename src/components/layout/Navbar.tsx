@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SITE_CONFIG, NAV_LINKS } from "@/lib/constants";
@@ -27,8 +27,14 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => { setMobileOpen(false); }, [pathname]);
+  // Close the mobile menu when the route changes. Handled during render with
+  // the "store previous value" pattern rather than in an effect, which avoids
+  // react-hooks/set-state-in-effect while preserving the same behaviour.
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setMobileOpen(false);
+  }
 
   return (
     <>
@@ -205,9 +211,15 @@ function NavLink({
 
 function DarkModeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  // Detect client mount via an external store (server snapshot is `false`)
+  // instead of setting state in an effect — avoids
+  // react-hooks/set-state-in-effect while keeping the placeholder behaviour.
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   // Render a same-size placeholder before mount so layout doesn't shift
   if (!mounted) {

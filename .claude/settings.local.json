@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "PowerShell(git -C \"C:\\\\Users\\\\HP\\\\okeowo-portfolio\" status 2>&1)",
-      "PowerShell(git -C \"C:\\\\Users\\\\HP\\\\okeowo-portfolio\" log --oneline -5 2>&1)"
+      "PowerShell(git -C \"C:\\\\Users\\\\HP\\\\okeowo-portfolio\" log --oneline -5 2>&1)",
+      "mcp__8bd5d4f9-d9f4-45a6-a850-9c8005ef2641__deploy_to_vercel",
+      "mcp__8bd5d4f9-d9f4-45a6-a850-9c8005ef2641__list_teams",
+      "mcp__8bd5d4f9-d9f4-45a6-a850-9c8005ef2641__list_projects"
     ]
   }
 }
