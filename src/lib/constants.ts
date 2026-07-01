@@ -9,8 +9,8 @@ export const SITE_CONFIG = {
   handle: "Filosofer",
   title: "Okeowo Emmanuel — Software Engineer",
   description:
-    "Computer Science student and aspiring software engineer. I build systems that are fast, readable, and honest about their tradeoffs.",
-  url: "https://okeowo.dev",       // TODO: update when domain is live
+    "Software engineer building full-stack web applications, with a focus on AI, cloud, and modern web engineering.",
+  url: "https://okeowo-portfolio.vercel.app",   // update if you add a custom domain
   email: "emmanuelokeowo14@gmail.com",       // TODO: update to your real email
   availability: "available" as AvailabilityStatus,
   github: "https://github.com/filosofer01",        // TODO: update

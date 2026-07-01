@@ -3,6 +3,7 @@ import { getAllProjects } from "@/content/data/projects";
 import { ProjectCard } from "@/components/cards/ProjectCard";
 import { SITE_CONFIG } from "@/lib/constants";
 import { Reveal } from "@/components/ui/Reveal";
+import { MiniProjects } from "@/components/projects/MiniProjects";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -66,6 +67,9 @@ export default function ProjectsPage() {
           </Reveal>
         ))}
       </div>
+
+      {/* ── Mini projects (renders only once the list is populated) ── */}
+      <MiniProjects />
 
     </div>
   );

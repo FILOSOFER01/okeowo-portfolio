@@ -22,6 +22,19 @@ export interface Project {
   priority?: number;          // higher = ranked more prominently in Featured
 }
 
+// ─── Mini project types ───────────────────────────────────────────────────────
+// Small, self-contained builds. Each lives in its own repo + deployment; the
+// portfolio only lists and links to them.
+
+export interface MiniProject {
+  name: string;
+  description: string;        // one concise line
+  techStack: string[];
+  repoUrl?: string;
+  liveUrl?: string;
+  status?: ProjectStatus;
+}
+
 // ─── Experience types ─────────────────────────────────────────────────────────
 
 export interface Experience {
